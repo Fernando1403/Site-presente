@@ -1,0 +1,12 @@
+{
+  "giftsFernando": [
+    {
+      "id": 1,
+      "name": "Tênis Nike",
+      "size": "42",
+      "description": "Tênis preto confortável para caminhada",
+      "price": "299,90"
+    }
+  ],
+  "giftsGiovanna": []
+}
