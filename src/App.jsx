@@ -109,7 +109,8 @@ function App() {
                     className="border-b py-2 flex justify-between items-center"
                   >
                     <div>
-                      <strong>{gift.name}</strong> – R$ {gift.price}
+                      <strong>{gift.name}</strong> – R$ {gift.price} - TAM: {gift.size}
+                      <p className="text-sm text-gray-600">{gift.description}</p>
                     </div>
                     <div className="flex gap-2">
                       <button onClick={() => handleEdit(gift, "Fernando")} title="Editar">🖉</button>
@@ -143,7 +144,8 @@ function App() {
                     className="border-b py-2 flex justify-between items-center"
                   >
                     <div>
-                      <strong>{gift.name}</strong> – R$ {gift.price}
+                      <strong>{gift.name}</strong> – R$ {gift.price} - TAM: {gift.size}
+                      <p className="text-sm text-gray-600">{gift.description}</p>
                     </div>
                     <div className="flex gap-2">
                       <button onClick={() => handleEdit(gift, "Giovanna")} title="Editar">🖉</button>
