@@ -27,7 +27,7 @@ function App() {
 
   const [adding, setAdding] = useState(false);
   const [activePerson, setActivePerson] = useState(null);
-  const [editingGift, setEditingGift] = useState(null); // novo estado
+  const [editingGift, setEditingGift] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("giftsFernando", JSON.stringify(giftsFernando));
@@ -36,7 +36,6 @@ function App() {
 
   const handleAddGift = (gift) => {
     if (editingGift) {
-      // Edição
       const updateList = (list, setList) => {
         const updated = list.map((item) =>
           item.id === editingGift.id ? { ...item, ...gift, id: editingGift.id } : item
@@ -52,7 +51,6 @@ function App() {
 
       setEditingGift(null);
     } else {
-      // Novo presente
       const newGift = { ...gift, id: Date.now() };
       if (activePerson === "Fernando") {
         setGiftsFernando([...giftsFernando, newGift]);

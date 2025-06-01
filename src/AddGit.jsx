@@ -1,23 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function AddGift({ onSubmit }) {
+function AddGift({ onSubmit, initialGift = null }) {
   const [name, setName] = useState("");
   const [size, setSize] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+
+  // Preenche o formulário se estiver editando
+  useEffect(() => {
+    if (initialGift) {
+      setName(initialGift.name || "");
+      setSize(initialGift.size || "");
+      setDescription(initialGift.description || "");
+      setPrice(initialGift.price || "");
+    }
+  }, [initialGift]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name.trim()) return;
 
     onSubmit({
-      name,
-      size,
-      description,
-      price,
+      name: name.trim(),
+      size: size.trim(),
+      description: description.trim(),
+      price: price.trim(),
     });
 
-    // Limpar os campos após enviar
     setName("");
     setSize("");
     setDescription("");
@@ -30,7 +39,9 @@ function AddGift({ onSubmit }) {
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded shadow-md w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Adicionar Presente</h2>
+        <h2 className="text-2xl font-bold mb-4 text-center">
+          {initialGift ? "Editar Presente" : "Adicionar Presente"}
+        </h2>
 
         <label className="block mb-2 font-medium">Nome do Presente</label>
         <input
