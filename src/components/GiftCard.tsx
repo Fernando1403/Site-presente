@@ -1,4 +1,4 @@
-import { Trash2 } from 'lucide-react';
+import { ExternalLink, Trash2 } from 'lucide-react';
 import { PRIORITY_LABELS } from '../types';
 import type { Gift } from '../types';
 
@@ -26,6 +26,15 @@ export function GiftCard({ gift, onDelete, showOwner = true }: GiftCardProps) {
 
   return (
     <div className="gift-card">
+      {gift.imageUrl && (
+        <img
+          src={gift.imageUrl}
+          alt={`Imagem de referência para ${gift.name}`}
+          className="gift-reference-image"
+          loading="lazy"
+        />
+      )}
+
       <div className="gift-header">
         <div>
           <h3 className="gift-title">{gift.name}</h3>
@@ -54,6 +63,18 @@ export function GiftCard({ gift, onDelete, showOwner = true }: GiftCardProps) {
       <div className="gift-price">
         R$ {gift.price}
       </div>
+
+      {gift.referenceLink && (
+        <a
+          href={gift.referenceLink}
+          target="_blank"
+          rel="noreferrer"
+          className="gift-reference-link"
+        >
+          <ExternalLink size={16} />
+          <span>Link de referência</span>
+        </a>
+      )}
 
       <div className="priority-container">
         <div className="priority-header">

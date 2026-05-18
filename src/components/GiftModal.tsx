@@ -14,6 +14,8 @@ export function GiftModal({ isOpen, onClose, onSave, owner }: GiftModalProps) {
   const [name, setName] = useState('');
   const [type, setType] = useState(GIFT_TYPES[0]);
   const [price, setPrice] = useState('');
+  const [referenceLink, setReferenceLink] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [priority, setPriority] = useState<PriorityLevel>(3);
 
   if (!isOpen) return null;
@@ -22,6 +24,8 @@ export function GiftModal({ isOpen, onClose, onSave, owner }: GiftModalProps) {
     e.preventDefault();
     if (!name.trim()) return;
 
+    const trimmedReferenceLink = referenceLink.trim();
+    const trimmedImageUrl = imageUrl.trim();
     const newGiftData: Omit<Gift, 'id'> = {
       name,
       type,
@@ -31,12 +35,22 @@ export function GiftModal({ isOpen, onClose, onSave, owner }: GiftModalProps) {
       createdAt: Date.now(),
     };
 
+    if (trimmedReferenceLink) {
+      newGiftData.referenceLink = trimmedReferenceLink;
+    }
+
+    if (trimmedImageUrl) {
+      newGiftData.imageUrl = trimmedImageUrl;
+    }
+
     onSave(newGiftData);
     
     // Reset form
     setName('');
     setType(GIFT_TYPES[0]);
     setPrice('');
+    setReferenceLink('');
+    setImageUrl('');
     setPriority(3);
     onClose();
   };
@@ -86,6 +100,28 @@ export function GiftModal({ isOpen, onClose, onSave, owner }: GiftModalProps) {
               placeholder="Ex: 299,90"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Link de referência</label>
+            <input
+              type="url"
+              className="form-input"
+              placeholder="Ex: https://loja.com/produto-parecido"
+              value={referenceLink}
+              onChange={(e) => setReferenceLink(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Imagem de referência</label>
+            <input
+              type="url"
+              className="form-input"
+              placeholder="Ex: https://site.com/imagem.jpg"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
             />
           </div>
 

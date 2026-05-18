@@ -210,6 +210,15 @@ input, select, textarea {
   gap: 16px;
 }
 
+.gift-reference-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background-color: #f1f5f9;
+}
+
 .gift-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
@@ -251,6 +260,22 @@ input, select, textarea {
   font-size: 18px;
   font-weight: 700;
   color: var(--text-main);
+}
+
+.gift-reference-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.gift-reference-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 .gift-type-badge {

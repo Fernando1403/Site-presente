@@ -7,6 +7,8 @@ export interface Gift {
   name: string;
   type: string;
   price: string;
+  referenceLink?: string;
+  imageUrl?: string;
   priority: PriorityLevel;
   owner: User;
   createdAt: number;
